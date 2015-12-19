@@ -10,3 +10,6 @@ RUN apt-get update && \
   apt-get autoclean && apt-get --purge --yes autoremove && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+WORKDIR /data
+VOLUME ["/data"]
+
