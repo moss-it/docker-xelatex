@@ -1,6 +1,8 @@
 FROM debian:latest
 MAINTAINER Willian Paixao <willian@ufpa.br>
 
+LABEL version="1.0.0"
+
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
