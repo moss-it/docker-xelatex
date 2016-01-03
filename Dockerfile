@@ -1,3 +1,6 @@
+#: title  : moss/xelatex
+#: author : "Willian Paixao" <willian@ufpa.br>
+#: version: "1.0.0"
 FROM debian:latest
 MAINTAINER Willian Paixao <willian@ufpa.br>
 
@@ -5,6 +8,7 @@ LABEL version="1.0.0"
 
 ENV DEBIAN_FRONTEND noninteractive
 
+# Install all TeX and LaTeX dependences
 RUN apt-get update && \
   apt-get install --yes --no-install-recommends \
   git \
@@ -20,6 +24,7 @@ RUN apt-get update && \
   apt-get autoclean && apt-get --purge --yes autoremove && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Export the output data
 WORKDIR /data
 VOLUME ["/data"]
 
