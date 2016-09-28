@@ -2,9 +2,9 @@
 #: author : "Willian Paixao" <willian@ufpa.br>
 #: version: "1.0.0"
 FROM debian:latest
-MAINTAINER Willian Paixao <willian@ufpa.br>
+MAINTAINER thiagoalmeidasa@gmail.com
 
-LABEL version="1.0.0"
+LABEL version="1.1.0"
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -13,9 +13,9 @@ RUN apt-get update && \
   apt-get install --yes --no-install-recommends \
   git \
   ca-certificates \
+  inotify-tools \
   lmodern \
-# texlive-generic-extra \
-# texlive-fonts-extra \
+  make \
   texlive-fonts-recommended \
   texlive-generic-recommended \
   texlive-lang-english \
