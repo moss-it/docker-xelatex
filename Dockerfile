@@ -1,7 +1,7 @@
 #: title  : moss/xelatex
 #: author : "Willian Paixao" <willian@ufpa.br>
-#: version: "1.0.0"
-FROM debian:latest
+#: version: "1.1.0"
+FROM debian:8
 MAINTAINER thiagoalmeidasa@gmail.com
 
 LABEL version="1.1.0"
