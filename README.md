@@ -14,8 +14,9 @@ Docker Xelatex
 
 ## Supported tags and respective `Dockerfile` links
 
-* `latest`, `1.1` [(Dockerfile)](https://github.com/moss-it/docker-xelatex/blob/master/Dockerfile)
+* `latest`, `v1.1.0` [(Dockerfile)](https://github.com/moss-it/docker-xelatex/blob/master/Dockerfile)
 
+* `v1.0.0` [(Dockerfile)](https://github.com/moss-it/docker-xelatex/blob/v1.0.0/Dockerfile)
 
 ## Base Docker Image
 
