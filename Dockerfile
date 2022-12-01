@@ -1,18 +1,19 @@
 #: title  : moss/xelatex
 #: author : "Willian Paixao" <willian@ufpa.br>
-#: version: "1.1.0"
-FROM debian:8
-MAINTAINER thiagoalmeidasa@gmail.com
+#: version: "1.2.0"
+FROM debian:11
 
-LABEL version="1.1.0"
+LABEL org.opencontainers.image.authors="Willian Paixao <willian@ufpa.br>"
+LABEL org.opencontainers.image.title="moss/xelatex"
+LABEL org.opencontainers.image.version="1.2.0"
 
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install all TeX and LaTeX dependences
 RUN apt-get update && \
   apt-get install --yes --no-install-recommends \
-  git \
   ca-certificates \
+  git \
   inotify-tools \
   lmodern \
   make \
@@ -27,4 +28,3 @@ RUN apt-get update && \
 # Export the output data
 WORKDIR /data
 VOLUME ["/data"]
-
