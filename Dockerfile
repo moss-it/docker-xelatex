@@ -1,13 +1,13 @@
 #: title  : moss/xelatex
 #: author : "Willian Paixao" <willian@ufpa.br>
 #: version: "1.2.0"
-FROM debian:11
+FROM debian:12
 
 LABEL org.opencontainers.image.authors="Willian Paixao <willian@ufpa.br>"
 LABEL org.opencontainers.image.title="moss/xelatex"
 LABEL org.opencontainers.image.version="1.2.0"
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND="noninteractive"
 
 # Install all TeX and LaTeX dependences
 RUN apt-get update && \
@@ -17,6 +17,7 @@ RUN apt-get update && \
   inotify-tools \
   lmodern \
   make \
+  texlive-extra-utils \
   texlive-fonts-recommended \
   texlive-lang-english \
   texlive-lang-portuguese \

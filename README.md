@@ -20,7 +20,7 @@ Docker Xelatex
 
 ## Base Docker Image
 
-* [debian:8](https://registry.hub.docker.com/_/debian/)
+* [debian:12](https://registry.hub.docker.com/_/debian/)
 
 ## Introduction 
 
