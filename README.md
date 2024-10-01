@@ -14,8 +14,8 @@ Docker Xelatex
 
 ## Supported tags and respective `Dockerfile` links
 
-* `latest`, `v1.1.0` [(Dockerfile)](https://github.com/moss-it/docker-xelatex/blob/master/Dockerfile)
-
+* `latest`, `v1.3.0` [(Dockerfile)](https://github.com/moss-it/docker-xelatex/blob/v1.3.0/Dockerfile)
+* `latest`, `v1.2.0` [(Dockerfile)](https://github.com/moss-it/docker-xelatex/blob/v1.2.0/Dockerfile)
 * `v1.0.0` [(Dockerfile)](https://github.com/moss-it/docker-xelatex/blob/v1.0.0/Dockerfile)
 
 ## Base Docker Image
@@ -24,8 +24,7 @@ Docker Xelatex
 
 ## Introduction 
 
-Docker container used for compile XeLaTex documents and deploy a generated PDF
-file.
+Docker container used for compile [XeLaTex](https://en.wikipedia.org/wiki/XeTeX) documents and deploy a generated PDF file.
 
 You can use to do instantaneous compile for each save with `inotify-tools`.
 
@@ -33,18 +32,19 @@ You can use to do instantaneous compile for each save with `inotify-tools`.
 
 * Simple make:
 
-```
-docker run --rm -v $(shell pwd):/data moss/xelatex make
+```sh
+$ docker run --rm -v ${PWD}:/data moss/xelatex make
 ```
 
 * Auto compile for each save:
 
-```
-docker run --rm -v $(shell pwd):/data moss/xelatex make view
+```sh
+$ docker run --rm -v ${PWD}:/data moss/xelatex make view
 ```
 
 ## Makefile Example
-```
+
+```sh
 ######################
 #      Makefile      #
 ######################
@@ -72,8 +72,5 @@ clean:
 ```
 
 ## Useful links
-
-[Github remote](https://github.com/moss-it/docker-xelatex)
-
-[Docker Hub repo](https://hub.docker.com/r/moss/xelatex/)
-
+* [Github repository](https://github.com/moss-it/docker-xelatex)
+* [Docker Hub repository](https://hub.docker.com/r/moss/xelatex/)
