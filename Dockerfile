@@ -16,6 +16,7 @@ RUN apt-get update && \
   apt-get install --yes --no-install-recommends \
   ca-certificates \
   git \
+  html2text \
   inotify-tools \
   lmodern \
   make \
