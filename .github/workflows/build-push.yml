@@ -4,11 +4,23 @@ on:
   push:
     tags:
       - v1.*
+  workflow_dispatch:
 
 jobs:
   docker:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       
@@ -28,9 +40,32 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            ghcr.io/moss-it/xelatex
+            moss/xelatex
+          tags: |
+            type=sha,format=long
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+
       - name: Build and push
         uses: docker/build-push-action@v6
+        id: build-and-push
         with:
           platforms: linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/386
           push: true
-          tags: moss/xelatex:latest,moss/xelatex:${{ github.ref_name }},ghcr.io/moss-it/xelatex:latest,ghcr.io/moss-it/xelatex:${{ github.ref_name }}
+          tags: ${{ steps.meta.outputs.tags }}
+
+      - name: Sign the images with GitHub OIDC Token
+        env:
+          DIGEST: ${{ steps.build-and-push.outputs.digest }}
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          images=""
+          for tag in ${TAGS}; do
+            images+="${tag}@${DIGEST} "
+          done
+          cosign sign --yes ${images}
