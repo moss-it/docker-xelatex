@@ -15,14 +15,13 @@ Docker Xelatex
 ## Supported tags and respective `Dockerfile` links
 
 * `latest`, `v1.3.0` [(Dockerfile)](https://github.com/moss-it/docker-xelatex/blob/v1.3.0/Dockerfile)
-* `latest`, `v1.2.0` [(Dockerfile)](https://github.com/moss-it/docker-xelatex/blob/v1.2.0/Dockerfile)
 * `v1.0.0` [(Dockerfile)](https://github.com/moss-it/docker-xelatex/blob/v1.0.0/Dockerfile)
 
 ## Base Docker Image
 
 * [debian:12](https://registry.hub.docker.com/_/debian/)
 
-## Introduction 
+## Introduction
 
 Docker container used for compile [XeLaTex](https://en.wikipedia.org/wiki/XeTeX) documents and deploy a generated PDF file.
 
@@ -51,24 +50,24 @@ $ docker run --rm -v ${PWD}:/data moss/xelatex make view
 
 filename=your_file_without_extension
 
-pdf: 
-	xelatex ${filename}
-	xelatex ${filename}
+pdf:
+    xelatex ${filename}
+    xelatex ${filename}
 
 text: html
-	html2text -width 100 -style pretty ${filename}/${filename}.html | sed -n '/./,$$p' | head -n-2 >${filename}.txt
+    html2text -width 100 -style pretty ${filename}/${filename}.html | sed -n '/./,$$p' | head -n-2 >${filename}.txt
 
 html:
-	@#latex2html -split +0 -info "" -no_navigation ${filename}
-	htlatex ${filename}
+    @#latex2html -split +0 -info "" -no_navigation ${filename}
+    htlatex ${filename}
 
 view:
-	while inotifywait --event modify,move_self,close_write ${filename}.tex; \
-		do xelatex -halt-on-error ${filename} &&   xelatex -halt-on-error \
-		${filename}; done
+    while inotifywait --event modify,move_self,close_write ${filename}.tex; \
+        do xelatex -halt-on-error ${filename} &&   xelatex -halt-on-error \
+        ${filename}; done
 
 clean:
-	rm -f ${filename}.{ps,pdf,log,aux,out,dvi,bbl,blg,snm,toc,nav}
+    rm -f ${filename}.{ps,pdf,log,aux,out,dvi,bbl,blg,snm,toc,nav}
 ```
 
 ## Useful links
