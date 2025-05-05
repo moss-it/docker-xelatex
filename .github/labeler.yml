@@ -1,0 +1,16 @@
+docker:
+  - changed-files:
+    - any-glob-to-any-file: Dockerfile
+
+documentation:
+  - changed-files:
+    - any-glob-to-any-file: "*.md"
+    - any-glob-to-any-file: LICENSE
+
+dependencies:
+  - changed-files:
+    - any-glob-to-any-file: .github/dependabot.yml
+
+github_actions:
+  - changed-files:
+    - any-glob-to-any-file: .github/workflows/*
