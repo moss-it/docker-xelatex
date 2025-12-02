@@ -1,7 +1,7 @@
 #: title  : moss/xelatex
 #: author : "Willian Paixao" <willian@ufpa.br>
 #: version: "1.3.2"
-FROM debian:13@sha256:72547dd722cd005a8c2aa2079af9ca0ee93aad8e589689135feaed60b0a8c08d
+FROM debian:13@sha256:8f6a88feef3ed01a300dafb87f208977f39dccda1fd120e878129463f7fa3b8f
 
 LABEL org.opencontainers.image.authors="Willian Paixao <willian@ufpa.br>"
 LABEL org.opencontainers.image.licenses="GPL-3.0"
